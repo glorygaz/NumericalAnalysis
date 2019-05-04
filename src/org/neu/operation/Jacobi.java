@@ -34,9 +34,4 @@ public class Jacobi implements IterationMethod{
     public void setX(Matrix x) {
         this.x = x;
     }
-
-    @Override
-    public Matrix getX() {
-        return x;
-    }
 }

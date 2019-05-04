@@ -21,7 +21,7 @@ public class SOR implements IterationMethod{
         M = Matrix.mul(Matrix.inver(Matrix.sub(D, Matrix.mul(L, w))),
                 Matrix.add(Matrix.mul(D, 1-w), Matrix.mul(U,w)));
         //g = w(D-wL)^-1*b
-        g = Matrix.mul(Matrix.mul(Matrix.inver(Matrix.sub(D, Matrix.mul(L, w))), b), w);
+        g = Matrix.mul(Matrix.mul(Matrix.inver(Matrix.sub(D, Matrix.mul(L, w))), w), b);
         this.x = x;
     }
 
@@ -34,10 +34,5 @@ public class SOR implements IterationMethod{
     @Override
     public void setX(Matrix x) {
         this.x = x;
-    }
-
-    @Override
-    public Matrix getX() {
-        return x;
     }
 }

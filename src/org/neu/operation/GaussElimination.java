@@ -5,6 +5,7 @@ import org.neu.dataStructure.Matrix;
 public class GaussElimination { //高斯消去法
     public static Matrix gaussElimination(Matrix A, Matrix b) throws Exception {
         Matrix x = new Matrix(b.getRow(), b.getCol());
+        Matrix bcopy = new Matrix(Matrix.copyMatrix(b));
 
         int row = A.getRow();
         if(A.getCol() != A.getRow()){
@@ -19,7 +20,7 @@ public class GaussElimination { //高斯消去法
                 for (int k = i; k < row; k++) { //遍历一行
                     a[j][k] -= lij*a[i][k];
                 }
-                b.getMatrix()[j][0] -= lij*b.getMatrix()[i][0];
+                bcopy.getMatrix()[j][0] -= lij*bcopy.getMatrix()[i][0];
             }
         }
 
@@ -28,7 +29,7 @@ public class GaussElimination { //高斯消去法
             for (int j = i; j < row; j++) {
                 sum += a[i][j]*x.getMatrix()[j][0];
             }
-            x.getMatrix()[i][0] = (b.getMatrix()[i][0] - sum)/a[i][i];
+            x.getMatrix()[i][0] = (bcopy.getMatrix()[i][0] - sum)/a[i][i];
         }
         return x;
     }
