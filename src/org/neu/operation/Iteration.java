@@ -2,8 +2,6 @@ package org.neu.operation;
 
 import org.neu.dataStructure.Matrix;
 
-import java.math.BigDecimal;
-
 public class Iteration {
     private int scale;  //小数点后的位数要求
     private int k = 0; //迭代次数
@@ -62,10 +60,6 @@ public class Iteration {
         }
         s += "1";
         return Double.valueOf(s);
-    }
-
-    public void setkMax(int kMax) {
-        this.kMax = kMax;
     }
 
     public int getK() {
