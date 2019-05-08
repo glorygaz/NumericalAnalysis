@@ -4,12 +4,18 @@ import org.neu.dataStructure.Hilbert;
 import org.neu.dataStructure.Matrix;
 import org.neu.operation.*;
 
+import java.util.Scanner;
+
 
 public class Test {
     public static void main(String[] args) {
         try {
-            doOneTime(6,3, 1.3);
-            doOneTime(10,3, 1.3);
+            while(true){
+                System.out.println("Please enter the dimension:");
+                Scanner scan = new Scanner(System.in);
+                int dimen = scan.nextInt();
+                doOneTime(dimen, 2, 1.46);
+            }
         }catch (Exception e) {
             e.printStackTrace();
         }

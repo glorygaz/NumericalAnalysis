@@ -5,13 +5,13 @@ import org.neu.dataStructure.Matrix;
 public class GaussElimination { //高斯消去法
     public static Matrix gaussElimination(Matrix A, Matrix b) throws Exception {
         Matrix x = new Matrix(b.getRow(), b.getCol());
-        Matrix bcopy = new Matrix(Matrix.copyMatrix(b));
 
         int row = A.getRow();
         if(A.getCol() != A.getRow()){
             throw new Exception("GaussEliminationFailed");
         }
 
+        Matrix bcopy = new Matrix(Matrix.copyMatrix(b));
         double[][] a = Matrix.copyMatrix(A); //复制矩阵
 
         for(int i = 0; i < row; i++){   //遍历每一列,从左到右
