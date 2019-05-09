@@ -1,7 +1,5 @@
 package org.neu.dataStructure;
 
-import java.math.BigDecimal;
-
 public class Matrix {
     private double [][] matrix;
 
@@ -262,5 +260,40 @@ public class Matrix {
             result.getMatrix()[i][i] = a.getMatrix()[i][i];
         }
         return result;
+    }
+
+    /**
+     * Function:求解矩阵1-条件数
+     */
+    public static double cond1(Matrix A) throws Exception {
+        return norm1(A)*norm1(Matrix.inver(A));
+    }
+
+    /**
+     * Function:求解矩阵1-范数
+     */
+    public static double norm1(Matrix A){
+        double max = 0;
+        for (int i = 0; i < A.getCol(); i++) {
+            double temp = 0;
+            for (int j = 0; j < A.getRow(); j++) {
+                temp += A.getMatrix()[j][i];
+            }
+            if(max < temp){
+                max = temp;
+            }
+        }
+        return max;
+    }
+
+    /**
+     * Function:对对称正定矩阵进行预处理
+     */
+    public static Matrix preTreatment(Matrix A) throws Exception {
+        Matrix C = Matrix.diagonalMatrix(A);
+        for (int i = 0; i < C.getRow(); i++) {
+            C.getMatrix()[i][i] = Math.sqrt(C.getMatrix()[i][i]);
+        }
+        return Matrix.mul(Matrix.mul(Matrix.inver(C),A),Matrix.inver(C));
     }
 }
